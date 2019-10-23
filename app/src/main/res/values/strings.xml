@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">MyQuizApp</string>
     <string name="enabled">Enabled</string>
+    <string name="ltr_soft_nquiz_game">LTR SOFT\nQUIZ GAME</string>
+    <string name="next">next</string>
+    <string name="please_select_nyour_team">PLEASE SELECT YOUR TEAM</string>
+    <string name="red_team">Red team</string>
+    <string name="anchor">anchor</string>
+    <string name="orange_team">Orange team</string>
+    <string name="blue_team">Blue team</string>
+    <string name="green_team">Green team</string>
+    <string name="yellow_team">Yellow team</string>
+    <string name="todo">TODO</string>
+    <string name="about_us">About Us</string>
+    <string name="amol_kharose">Amol Kharose</string>
+    <string name="b_sc_cs_ty_a">B.Sc. CS TY A</string>
+    <string name="aslam_shaikh">Aslam Shaikh</string>
+    <string name="omkesh_munde">Omkesh Munde</string>
 </resources>
