@@ -16,4 +16,6 @@
     <string name="b_sc_cs_ty_a">B.Sc. CS TY A</string>
     <string name="aslam_shaikh">Aslam Shaikh</string>
     <string name="omkesh_munde">Omkesh Munde</string>
+    <string name="anchor_dashboard">Anchor\nDashboard</string>
+    <string name="reset_all">RESET ALL</string>
 </resources>
