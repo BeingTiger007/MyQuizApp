@@ -16,14 +16,15 @@ import com.google.firebase.database.FirebaseDatabase;
 public class OrangeTeam extends AppCompatActivity {
 
     FirebaseDatabase database;
-    DatabaseReference myref;
+    DatabaseReference myref,myref2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orange_team);
         database = FirebaseDatabase.getInstance();
-        myref = database.getReference("OrangeTeam");
+        myref = database.getReference("LED_STATUS");
+        myref2 = database.getReference("OrangeTeam");
 
         final MediaPlayer mp = MediaPlayer.create(getApplicationContext(),R.raw.click);
         final ImageButton buttonorange = (ImageButton) findViewById(R.id.buttonorange);
@@ -32,7 +33,8 @@ public class OrangeTeam extends AppCompatActivity {
         buttonorange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myref.setValue(0);
+                myref.setValue(4);
+                myref2.setValue(4);
                 //Toast.makeText(getApplicationContext(),"click", Toast.LENGTH_SHORT).show();
                 mp.start();
             }

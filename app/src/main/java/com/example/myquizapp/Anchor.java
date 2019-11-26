@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Anchor extends AppCompatActivity {
     FirebaseDatabase database;
-    DatabaseReference Redref,GreenRef,BlueRef,YellowRef,OrangeRef;
+    DatabaseReference Redref,GreenRef,BlueRef,YellowRef,OrangeRef,myref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class Anchor extends AppCompatActivity {
         setContentView(R.layout.activity_anchor);
 
         database = FirebaseDatabase.getInstance();
+        myref = database.getReference("LED_STATUS");
         Redref = database.getReference("RedTeam");
         BlueRef = database.getReference("BlueTeam");
         YellowRef = database.getReference("YellowTeam");
@@ -29,6 +30,8 @@ public class Anchor extends AppCompatActivity {
         resetAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                myref.setValue(0);
                 Redref.setValue(null);
                 GreenRef.setValue(null);
                 BlueRef.setValue(null);

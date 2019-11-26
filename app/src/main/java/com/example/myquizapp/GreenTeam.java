@@ -16,14 +16,14 @@ import com.google.firebase.database.FirebaseDatabase;
 public class GreenTeam extends AppCompatActivity {
 
     FirebaseDatabase database;
-    DatabaseReference myref;
-
+    DatabaseReference myref,myref2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_green_team);
         database = FirebaseDatabase.getInstance();
-        myref = database.getReference("GreenTeam");
+        myref = database.getReference("LED_STATUS");
+        myref2 =database.getReference("GreenTeam");
 
         final MediaPlayer mp = MediaPlayer.create(getApplicationContext(),R.raw.click);
         final ImageButton buttongreen = (ImageButton) findViewById(R.id.buttongreen);
@@ -32,7 +32,8 @@ public class GreenTeam extends AppCompatActivity {
         buttongreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myref.setValue(0);
+                myref.setValue(5);
+                myref2.setValue(5);
                 //Toast.makeText(getApplicationContext(),"click", Toast.LENGTH_SHORT).show();
                 mp.start();
             }
