@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Anchor">
 
+    <Button
+        android:id="@+id/FirebaseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="ready"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resetAll"
+        app:layout_constraintVertical_bias="0.236" />
+
     <TextView
         android:id="@+id/anchorText"
         android:layout_width="wrap_content"
@@ -34,6 +47,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/anchorText"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/FirebaseButtonStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FirebaseButton"
+        app:layout_constraintVertical_bias="0.303" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
