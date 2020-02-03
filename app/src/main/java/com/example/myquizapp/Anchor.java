@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,14 +50,16 @@ public class Anchor extends AppCompatActivity {
         FirebaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FlagRef.setValue(0);
+                FlagRef.setValue("True");
+                Toast.makeText(getApplicationContext(),"Flag True",Toast.LENGTH_SHORT).show();
             }
         });
 
         FirebaseButtonStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FlagRef.setValue(1);
+                FlagRef.setValue("False");
+                Toast.makeText(getApplicationContext(),"Flag False",Toast.LENGTH_SHORT).show();
             }
         });
 

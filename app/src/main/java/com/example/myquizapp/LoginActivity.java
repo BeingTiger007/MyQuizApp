@@ -24,7 +24,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (username.getText().toString().equals("joykailas") || username.getText().toString().equals("mayamam") &&
+                Toast.makeText(getApplicationContext(), "Login Successful",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(LoginActivity.this, SelectTeam.class);
+                startActivity(i);
+            }
+
+                /*if (username.getText().toString().equals("joykailas") || username.getText().toString().equals("mayamam") &&
                         password.getText().toString().equals("coc$it") || password.getText().toString().equals("6969")) {
                     Toast.makeText(getApplicationContext(), "Login Successful",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, SelectTeam.class);
@@ -35,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"login failed", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
-    }
+        });*/
+    });
+}
 }
