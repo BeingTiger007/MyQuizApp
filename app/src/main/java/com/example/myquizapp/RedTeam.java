@@ -1,22 +1,26 @@
 package com.example.myquizapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class RedTeam extends AppCompatActivity {
 
     FirebaseDatabase database;
-    DatabaseReference myref,myref2;
+    DatabaseReference myref,myref2,FlagRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,31 +29,37 @@ public class RedTeam extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         myref = database.getReference("LED_STATUS");
         myref2 = database.getReference("RedTeam");
+        FlagRef = FirebaseDatabase.getInstance().getReference("FlagRef");
+
 
         final MediaPlayer mp = MediaPlayer.create(getApplicationContext(),R.raw.click);
-        final ImageButton buttonred = findViewById(R.id.buttonred);
-        Switch switchEnableButton = findViewById(R.id.switch_enable_button);
+        final ImageButton buttonred;
+        buttonred = findViewById(R.id.buttonred);
+
+        FlagRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean Flagvalue= Boolean.parseBoolean(Objects.requireNonNull(dataSnapshot.getValue()).toString());
+                buttonred.setEnabled(Flagvalue);
+                Toast.makeText(getApplicationContext(), Boolean.toString(Flagvalue),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         buttonred.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myref.setValue(1);
-                myref2.setValue(1.);
-                //Toast.makeText(getApplicationContext(),"click", Toast.LENGTH_SHORT).show();
+                myref.setValue(4);
+                myref2.setValue(4);
+                Toast.makeText(getApplicationContext(),"click", Toast.LENGTH_SHORT).show();
                 mp.start();
             }
         });
 
-        switchEnableButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    buttonred.setEnabled(true);
-                }
-                else{
-                    buttonred.setEnabled(false);
-                }
-            }
-        });
     }
 }

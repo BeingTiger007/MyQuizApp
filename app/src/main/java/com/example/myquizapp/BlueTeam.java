@@ -1,16 +1,13 @@
 package com.example.myquizapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,15 +33,16 @@ public class BlueTeam extends AppCompatActivity {
 
 
         final MediaPlayer mp = MediaPlayer.create(getApplicationContext(),R.raw.click);
-        final ImageButton buttonblue = (ImageButton) findViewById(R.id.buttonblue);
+        final ImageButton buttonblue;
+        buttonblue = findViewById(R.id.buttonblue);
 
         FlagRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Boolean  Flagvalue= Boolean.valueOf(dataSnapshot.getValue().toString());
+                boolean Flagvalue= Boolean.parseBoolean(Objects.requireNonNull(dataSnapshot.getValue()).toString());
                 buttonblue.setEnabled(Flagvalue);
-                Toast.makeText(getApplicationContext(), Flagvalue.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), Boolean.toString(Flagvalue),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -56,8 +54,8 @@ public class BlueTeam extends AppCompatActivity {
         buttonblue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myref.setValue(3);
-                myref2.setValue(3);
+                myref.setValue(1);
+                myref2.setValue(1);
                 Toast.makeText(getApplicationContext(),"click", Toast.LENGTH_SHORT).show();
                 mp.start();
             }
